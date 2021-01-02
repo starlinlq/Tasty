@@ -14,7 +14,6 @@ export const Wrapper = styled.div`
   }
   @media screen and (max-width: 500px) {
     padding-top: 10%;
-    height: 100vh;
   }
 `;
 export const Container = styled.div`

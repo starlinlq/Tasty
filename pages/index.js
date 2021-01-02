@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { NavBar, Header } from "../components";
+import { NavBar, Header, Services } from "../components";
 import data from "./assets/data";
 
 const Title = styled.h1`
@@ -12,10 +12,9 @@ export default function Home() {
   return (
     <>
       <NavBar />
-      <div>
-        <Header data={data.obj1} />
-        <Header data={data.obj2} />
-      </div>
+      <Header data={data.obj1} />
+      <Header data={data.obj2} />
+      <Services />
     </>
   );
 }
