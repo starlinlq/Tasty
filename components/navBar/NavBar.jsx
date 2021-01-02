@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { WiMoonAltWaningCrescent1 } from "react-icons/wi";
 import { GiShoppingCart } from "react-icons/gi";
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -16,12 +16,25 @@ import {
 
 const NavBar = () => {
   const [active, setActive] = useState(false);
+  const [nav, setNav] = useState(false);
+
+  const changeBackground = () => {
+    if (window.scrollY > 10) {
+      setNav(true);
+    } else {
+      setNav(false);
+    }
+  };
+
+  useEffect(function () {
+    window.addEventListener("scroll", changeBackground);
+  }, []);
 
   return (
-    <NavWrapper>
+    <NavWrapper onscroll={nav}>
       <Nav>
         <TitleWrapper>
-          <Title>TasTy</Title>
+          <Title>Tasty</Title>
         </TitleWrapper>
         <Container active={active}>
           <Item>Home</Item>

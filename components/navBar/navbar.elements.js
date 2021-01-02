@@ -6,9 +6,24 @@ export const Nav = styled.div`
   justify-content: space-between;
   color: #30475e;
   position: relative;
+  padding: 15px 0;
+
+  @media screen and (max-width: 800px) {
+    margin: 0;
+  }
 `;
-export const NavWrapper = styled.div``;
-export const TitleWrapper = styled.div``;
+export const NavWrapper = styled.div`
+  position: fixed;
+  width: 100%;
+  z-index: ${({ onscroll }) => (onscroll ? 999 : 1)};
+  box-shadow: ${({ onscroll }) => (onscroll ? "0 4px 2px -2px #d5d5d5" : 0)};
+  background-color: white;
+`;
+export const TitleWrapper = styled.div`
+  @media screen and (max-width: 800px) {
+    margin-left: 10px;
+  }
+`;
 export const Title = styled.h2``;
 export const Container = styled.div`
   display: flex;
@@ -17,15 +32,20 @@ export const Container = styled.div`
   width: 60%;
 
   @media screen and (max-width: 800px) {
-    display: ${({ active }) => (active ? "flex" : "none")};
-    color: white;
+    visibility: ${({ active }) => (active ? "visible" : "hidden")};
+    opacity: ${({ active }) => (active ? "1" : "0")};
+    transition: ${({ active }) =>
+      active ? " opacity 0.5s" : "all 0.3s ease-out"};
+    color: black;
     position: absolute;
-    top: 50px;
+    top: 30px;
     flex-direction: column;
     width: 100%;
     margin-top: 4%;
-    background-color: #30475e;
+    background-color: white;
+    z-index: 999;
     border-radius: 7px;
+    box-shadow: 0 4px 2px -2px #d5d5d5;
   }
 `;
 
@@ -61,9 +81,11 @@ export const Item = styled.p`
   margin: 0 2%;
   cursor: pointer;
   font-size: 1.1rem;
+  transition: height 0.5s ease-out;
 
   &:hover {
-    color: black;
+    transition: hight 0.5s ease-in;
+    color: #54e346;
   }
 
   @media screen and (max-width: 800px) {
