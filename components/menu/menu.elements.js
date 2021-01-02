@@ -1,32 +1,34 @@
 import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
-  margin: 0 15%;
-  margin-top: 3%;
+  justify-content: space-between;
+  flex-flow: wrap;
 
   @media screen and (max-width: 800px) {
-    flex-direction: column;
-    margin: 0 1%;
+    justify-content: center;
     align-items: center;
+    margin: 0 1%;
   }
 `;
+
 export const Section = styled.div`
   text-align: center;
+`;
+export const Title = styled.h1``;
+export const P = styled.p`
   font-size: 1.3rem;
-
-  @media screen and (max-width: 800px) {
-    margin: 5% 0;
-  }
+  padding-bottom: 2%;
+  color: #54e346;
 `;
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-bottom: 10%;
-  margin-top: 3%;
-`;
 
-export const Title = styled.h1``;
-export const P = styled.p`
-  color: #54e346;
+  margin: 0 20%;
+
+  @media screen and (max-width: 800px) {
+    margin: 0 1%;
+    align-items: center;
+  }
 `;

@@ -14,7 +14,7 @@ import {
   MobileMenu,
 } from "./navbar.elements";
 
-const NavBar = () => {
+export default function NavBar() {
   const [active, setActive] = useState(false);
   const [nav, setNav] = useState(false);
 
@@ -57,6 +57,4 @@ const NavBar = () => {
       </Nav>
     </NavWrapper>
   );
-};
-
-export default NavBar;
+}

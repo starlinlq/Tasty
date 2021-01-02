@@ -7,7 +7,7 @@ const Services = () => {
   return (
     <Wrapper>
       <Section>
-        <P> Oferring</P>
+        <P>Oferring</P>
         <Title>Our amazing services</Title>
       </Section>
       <Container>
