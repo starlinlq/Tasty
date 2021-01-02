@@ -11,6 +11,9 @@ export const Nav = styled.div`
   @media screen and (max-width: 800px) {
     margin: 0;
   }
+  @media screen and (max-width: 1200px) {
+    margin: 0 1%;
+  }
 `;
 export const NavWrapper = styled.div`
   position: fixed;

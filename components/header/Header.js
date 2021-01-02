@@ -8,30 +8,32 @@ import {
   ImgWrapper,
   Wrapper,
   InfoWrapper,
+  About,
+  Wrapper1,
 } from "./header.elements";
 import Image from "next/image";
 
-const Header = () => {
+const Header = ({ data }) => {
   return (
     <Wrapper>
-      <Container>
-        <Section>
+      <Container font={data.fontSize}>
+        <Section order={data.order} padding={data.padding}>
           <InfoWrapper>
-            <Title>Tasty Food</Title>
-            <SubTitle>
-              Try the best food of <br />
-              the week
-            </SubTitle>
-            <Menu>View Menu</Menu>
+            {data.about ? <About>About us</About> : null}
+            <Title color={data.color}>{data.title}</Title>
+            <SubTitle>{data.subTitle}</SubTitle>
+            <Menu>{data.button}</Menu>
           </InfoWrapper>
         </Section>
-        <ImgWrapper>
-          <Image
-            src="https://static.tildacdn.com/tild6239-6563-4039-a466-333865653161/transparent-salad-ve.png"
-            alt="food"
-            width={700}
-            height={700}
-          />
+        <ImgWrapper order={data.order} padding={data.padding}>
+          <Wrapper1>
+            <Image
+              src={data.img}
+              alt="food"
+              width={data.size}
+              height={data.size}
+            />
+          </Wrapper1>
         </ImgWrapper>
       </Container>
     </Wrapper>

@@ -2,19 +2,26 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
   width: 100%;
-  height: 100vh;
   position: relative;
-  padding-top: 4%;
-
+  padding-top: 5%;
+  height: 100vh;
+  @media screen and (max-width: 1100px) {
+    height: 100%;
+  }
   @media screen and (max-width: 800px) {
+    padding-top: 1%;
+    height: 100%;
+  }
+  @media screen and (max-width: 500px) {
     padding-top: 10%;
+    height: 100vh;
   }
 `;
 export const Container = styled.div`
   display: flex;
   margin: 0 15%;
 
-  font-size: 3rem;
+  font-size: ${({ font }) => font};
   justify-content: center;
 
   @media screen and (max-width: 800px) {
@@ -22,8 +29,8 @@ export const Container = styled.div`
   }
 
   @media screen and (max-width: 1200px) {
-    font-size: 2rem;
-    margin: 5%;
+    font-size: 1.5rem;
+    margin: 1%;
   }
 
   @media screen and (max-width: 500px) {
@@ -32,18 +39,22 @@ export const Container = styled.div`
   }
 `;
 export const Title = styled.h1`
-  color: #54e346;
+  color: ${({ color }) => color};
   margin: 0;
 `;
 export const Section = styled.div`
+  order: ${({ order }) => (order ? 2 : 1)};
   width: 45%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  padding-left: ${({ padding }) => (padding ? "4%" : "0")};
 
   @media screen and (max-width: 800px) {
-    width: 90%;
+    width: 100%;
+    padding: 0;
+    text-align: center;
   }
 `;
 
@@ -58,7 +69,7 @@ export const InfoWrapper = styled.div`
   }
 `;
 export const SubTitle = styled.p`
-  color: #111d5e;
+  color: #707070;
   margin: 3% 0;
 
   @media screen and (max-width: 800px) {
@@ -85,5 +96,20 @@ export const Menu = styled.button`
     padding: 4% 8%;
   }
 `;
-export const ImgWrapper = styled.div``;
-export const Img = styled.img``;
+export const ImgWrapper = styled.div`
+  order: ${({ order }) => (order ? 1 : 2)};
+  padding-right: ${({ padding }) => (padding ? "4%" : 0)};
+
+  @media screen and(max-width:800px) {
+    padding: 0;
+  }
+`;
+
+export const About = styled.p`
+  color: #54e346;
+`;
+
+export const Wrapper1 = styled.div`
+  display: flex;
+  justify-content: center;
+`;

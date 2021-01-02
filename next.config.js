@@ -1,5 +1,5 @@
 module.exports = {
   images: {
-    domains: ["static.tildacdn.com"],
+    domains: ["firebasestorage.googleapis.com"],
   },
 };
