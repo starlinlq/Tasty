@@ -1,5 +1,8 @@
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 import "./_app.css";
+import { wrapper } from "../store/index";
+import commerce from "../commerce/commerce";
+import { useDispatch } from "react-redux";
 
 const GlobalStyle = createGlobalStyle`
   *{
@@ -15,7 +18,7 @@ const theme = {
   },
 };
 
-export default function App({ Component, pageProps }) {
+function App({ Component, pageProps }) {
   return (
     <>
       <GlobalStyle />
@@ -25,3 +28,5 @@ export default function App({ Component, pageProps }) {
     </>
   );
 }
+
+export default wrapper.withRedux(App);
