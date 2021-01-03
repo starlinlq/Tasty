@@ -10,8 +10,14 @@ import {
 } from "./item.elements";
 import Image from "next/image";
 import { MdAddShoppingCart } from "react-icons/md";
+import { addToCart } from "../../store/cartActions";
+import { useDispatch } from "react-redux";
 
 const Item = ({ product }) => {
+  const dispatch = useDispatch();
+  function handleAddToCart(id) {
+    dispatch(addToCart(id));
+  }
   return (
     <Container key={product.id}>
       <ImgWrapper>
@@ -23,7 +29,7 @@ const Item = ({ product }) => {
       </Section>
       <Wrapper>
         <P>{product.price.formatted_with_code}</P>
-        <Cart>
+        <Cart onClick={() => handleAddToCart(product.id)}>
           <MdAddShoppingCart />
         </Cart>
       </Wrapper>

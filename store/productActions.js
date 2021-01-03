@@ -1,5 +1,6 @@
-import { STORE_PRODUCTS } from "./actionTypes";
+import { STORE_PRODUCTS, ADD_TO_CART_SUCCESS } from "./actionTypes";
 import commerce from "../commerce/commerce";
+import axios from "axios";
 
 const setProducts = ({ product }) => {
   return { type: STORE_PRODUCTS, payLoad: product };

@@ -66,6 +66,10 @@ export const Icons = styled.div`
 
 export const SingleIcon = styled.div`
   cursor: pointer;
+  display: flex;
+  position: relative;
+  text-align: center;
+  font-size: 1.8rem;
 
   &:hover {
     color: black;
@@ -93,5 +97,50 @@ export const Item = styled.p`
 
   @media screen and (max-width: 800px) {
     margin: 2% 0;
+  }
+`;
+
+export const Count = styled.p`
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  top: 1px;
+  right: 0;
+  left: 10px;
+  font-size: 12px;
+  color: white;
+  background-color: salmon;
+  border: 1px solid white;
+  border-radius: 50%;
+`;
+
+export const Cart = styled.div`
+  position: relative;
+`;
+export const Section = styled.div`
+  cursor: pointer;
+  display: flex;
+  position: relative;
+  text-align: center;
+  font-size: 1.8rem;
+
+  &:hover {
+    color: black;
+  }
+`;
+
+export const Wrapper = styled.div`
+  display: ${({ active }) => (active ? "block" : "none")};
+  position: absolute;
+  background-color: white;
+  z-index: 999;
+  width: 400px;
+  right: -0px;
+  border: 1px solid white;
+  border-radius: 7px;
+  box-shadow: 0 4px 2px -2px #d5d5d5;
+  @media screen and (max-width: 800px) {
+    right: 0;
+    left: 0;
   }
 `;

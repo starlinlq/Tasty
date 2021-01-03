@@ -12,7 +12,7 @@ import thunk from "redux-thunk";
 const initialState = {
   categories: [],
   products: [],
-  cart: {},
+  cart: null,
   checkout: {
     shippingOptions: [],
     checkoutTokenObject: {},
@@ -26,6 +26,9 @@ const productsStore = (state = initialState, action) => {
       return { ...state, products: action.payload };
     }
     case RETRIEVE_CART_SUCCESS: {
+      return { ...state, cart: action.payload };
+    }
+    case ADD_TO_CART_SUCCESS: {
       return { ...state, cart: action.payload };
     }
 

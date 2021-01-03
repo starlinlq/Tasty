@@ -12,11 +12,19 @@ import {
   Icons,
   SingleIcon,
   MobileMenu,
+  Count,
+  Cart,
+  Section,
+  Wrapper,
 } from "./navbar.elements";
+import { useSelector } from "react-redux";
+import CartItems from "./shoppingCart/CartItems";
 
 export default function NavBar() {
   const [active, setActive] = useState(false);
   const [nav, setNav] = useState(false);
+  const { cart } = useSelector((store) => store);
+  const [displayCart, setDisplayCart] = useState(false);
 
   const changeBackground = () => {
     if (window.scrollY > 10) {
@@ -25,6 +33,10 @@ export default function NavBar() {
       setNav(false);
     }
   };
+
+  function handleDisplayCart() {
+    setDisplayCart(!displayCart);
+  }
 
   useEffect(function () {
     window.addEventListener("scroll", changeBackground);
@@ -47,9 +59,17 @@ export default function NavBar() {
           <SingleIcon>
             <WiMoonAltWaningCrescent1 />
           </SingleIcon>
-          <SingleIcon>
-            <GiShoppingCart />
-          </SingleIcon>
+          <Cart>
+            <Section onClick={handleDisplayCart}>
+              <GiShoppingCart />
+              {cart && cart.line_items.length > 0 && (
+                <Count>{cart.line_items.length}</Count>
+              )}
+            </Section>
+            <Wrapper active={displayCart}>
+              <CartItems />
+            </Wrapper>
+          </Cart>
           <MobileMenu onClick={() => setActive(!active)}>
             <GiHamburgerMenu />
           </MobileMenu>
