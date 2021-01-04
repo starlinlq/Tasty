@@ -31,6 +31,12 @@ const productsStore = (state = initialState, action) => {
     case ADD_TO_CART_SUCCESS: {
       return { ...state, cart: action.payload };
     }
+    case REMOVE_FROM_CART_SUCCESS: {
+      return { ...state, cart: action.payload };
+    }
+    case UPDATE_CART_ITEM_SUCCESS: {
+      return { ...state, cart: action.payload };
+    }
 
     default:
       return state;

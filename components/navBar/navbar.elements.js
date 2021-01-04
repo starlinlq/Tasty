@@ -136,11 +136,16 @@ export const Wrapper = styled.div`
   z-index: 999;
   width: 400px;
   right: -0px;
+  top: 55px;
   border: 1px solid white;
   border-radius: 7px;
   box-shadow: 0 4px 2px -2px #d5d5d5;
   @media screen and (max-width: 800px) {
-    right: 0;
-    left: 0;
+    /* bring your own prefixes */
+  }
+
+  @media screen and (max-width: 550px) {
+    position: fixed;
+    width: 100%;
   }
 `;

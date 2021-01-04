@@ -10,9 +10,8 @@ export default function Menu({ content }) {
         <Title>Menu of the week</Title>
       </Section>
       <Container>
-        {content.map((data) => (
-          <Item product={data} key={data.id} />
-        ))}
+        {content &&
+          content.map((data) => <Item product={data} key={data.id} />)}
       </Container>
     </Wrapper>
   );

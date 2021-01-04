@@ -34,9 +34,20 @@ export default function NavBar() {
     }
   };
 
+  function handleActive() {
+    if (displayCart) {
+      setDisplayCart(false);
+    }
+    setActive(!active);
+  }
+
   function handleDisplayCart() {
+    if (active) {
+      setActive(false);
+    }
     setDisplayCart(!displayCart);
   }
+  console.log(cart, "hey");
 
   useEffect(function () {
     window.addEventListener("scroll", changeBackground);
@@ -67,10 +78,10 @@ export default function NavBar() {
               )}
             </Section>
             <Wrapper active={displayCart}>
-              <CartItems />
+              <CartItems cart={cart} setDisplayCart={setDisplayCart} />
             </Wrapper>
           </Cart>
-          <MobileMenu onClick={() => setActive(!active)}>
+          <MobileMenu onClick={handleActive}>
             <GiHamburgerMenu />
           </MobileMenu>
         </Icons>

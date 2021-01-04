@@ -13,5 +13,4 @@ module.exports = {
   env: {
     customKey: "pk_test_20839fa05df464b0e134957e835e1d7025ef24010fd13",
   },
-  y,
 };
