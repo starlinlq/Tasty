@@ -47,7 +47,6 @@ export default function NavBar() {
     }
     setDisplayCart(!displayCart);
   }
-  console.log(cart, "hey");
 
   useEffect(function () {
     window.addEventListener("scroll", changeBackground);

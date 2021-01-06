@@ -3,15 +3,15 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
   width: 100%;
   position: relative;
+  display: flex;
+  align-items: center;
 
-  padding-top: 5%;
   height: 100vh;
   @media screen and (max-width: 1100px) {
     height: 100%;
   }
   @media screen and (max-width: 800px) {
     padding-top: 1%;
-    height: 100%;
   }
   @media screen and (max-width: 500px) {
     padding-top: 10%;

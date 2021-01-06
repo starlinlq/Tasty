@@ -9,8 +9,8 @@ const Item = () => {
         <Section>
           <Image
             src="https://firebasestorage.googleapis.com/v0/b/firegram-2b8d8.appspot.com/o/dish.png?alt=media&token=eeacd8d7-afd0-4655-a455-c5e2e73a797a"
-            width={110}
-            height={110}
+            width={150}
+            height={150}
           />
         </Section>
         <Title>Excellent food</Title>

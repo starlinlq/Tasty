@@ -13,22 +13,28 @@ export const Container = styled.div`
 
 export const Section = styled.div`
   text-align: center;
+  font-size: 2rem;
+
+  @media screen and (max-width: 800px) {
+    font-size: 1.3rem;
+  }
 `;
 export const Title = styled.h1``;
 export const P = styled.p`
-  font-size: 1.3rem;
   padding-bottom: 2%;
   color: #54e346;
 `;
 export const Wrapper = styled.div`
   display: flex;
-  flex-direction: column;
   justify-content: center;
-
-  margin: 0 20%;
+  margin: 0 15%;
 
   @media screen and (max-width: 800px) {
     margin: 0 1%;
     align-items: center;
   }
+`;
+
+export const Sec = styled.div`
+  width: 100%;
 `;

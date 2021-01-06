@@ -1,4 +1,5 @@
 import React from "react";
+import stripHtml from "string-strip-html";
 import {
   Container,
   Section,
@@ -15,17 +16,18 @@ import { useDispatch } from "react-redux";
 
 const Item = ({ product }) => {
   const dispatch = useDispatch();
+  const { result } = stripHtml(product.description);
   function handleAddToCart(id) {
     dispatch(addToCart(id));
   }
   return (
     <Container key={product.id}>
       <ImgWrapper>
-        <Image src={product.media.source} width={130} height={130} />
+        <Image src={product.media.source} width={180} height={180} />
       </ImgWrapper>
       <Section>
         <Title>{product.name}</Title>
-        <P>{product.description}</P>
+        <P>{result}</P>
       </Section>
       <Wrapper>
         <P>{product.price.formatted_with_code}</P>

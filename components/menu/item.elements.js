@@ -8,16 +8,22 @@ export const Container = styled.div`
   box-shadow: 0 2px 4px rgba(3, 74, 40, 0.15);
   padding: 2rem 1rem;
   border-radius: 0.5rem;
-  width: 250px;
+  width: 300px;
+  height: 400px;
   position: relative;
   border-radius: 7px;
+
+  @media screen and (max-width: 800px) {
+    width: 250px;
+  }
 `;
 export const ImgWrapper = styled.div``;
-export const Section = styled.div``;
+export const Section = styled.div`
+margin-top: 5%;`;
 export const Title = styled.h3``;
 export const P = styled.p`
   margin: 3% 0;
-  width: 230px;
+  width: 250px;
 `;
 export const Cart = styled.div`
   font-size: 25px;
@@ -42,5 +48,5 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 230px;
+  width: 250px;
 `;
