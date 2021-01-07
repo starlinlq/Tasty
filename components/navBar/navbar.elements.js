@@ -29,7 +29,9 @@ export const TitleWrapper = styled.div`
     margin-left: 10px;
   }
 `;
-export const Title = styled.h2``;
+export const Title = styled.h2`
+  text-align: center;
+`;
 export const Container = styled.div`
   display: flex;
   align-items: center;
