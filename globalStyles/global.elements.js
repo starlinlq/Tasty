@@ -24,6 +24,7 @@ export const Span = styled.span`
 export const Button = styled.button`
   margin-top: 3%;
   margin-left: 2%;
+  margin-right: 10px;
   background-color: white;
   border: 1px solid black;
   padding: 10px 50px;
@@ -34,7 +35,20 @@ export const Button = styled.button`
     border-color: grey;
   }
 `;
-export const Submit = styled.input``;
+export const Submit = styled.input`
+  margin-top: 3%;
+  margin-left: 2%;
+  margin-right: 10px;
+  background-color: white;
+  border: 1px solid black;
+  padding: 10px 50px;
+  border-radius: 4px;
+  cursor: pointer;
+
+  &:hover {
+    border-color: grey;
+  }
+`;
 export const Title = styled.h1`
   margin: 0 15%;
   padding: 2% 0;
@@ -57,8 +71,11 @@ export const Form = styled.form`
   margin: 0 2%;
 `;
 export const Wrapper = styled.div`
-  width: 600px;
-  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 700px;
+  height: 600px;
   box-shadow: 0 2px 4px rgba(3, 74, 40, 0.15);
 `;
 export const Input = styled.input`
@@ -88,8 +105,20 @@ export const StepSection = styled.div`
 export const P = styled.p`
   font-size: ${({ fontSize }) => fontSize};
   margin: 0 2%;
+  padding: 2% 0;
 `;
 export const Hr = styled.hr`
   height: 1px;
   width: 40%;
+`;
+
+export const Display1 = styled.div`
+  display: ${({ step1 }) => (step1 ? "flex" : "none")};
+
+  flex-wrap: wrap;
+`;
+export const Display2 = styled.div`
+  display: ${({ step2 }) => (step2 ? "flex" : "none")};
+
+  flex-wrap: wrap;
 `;

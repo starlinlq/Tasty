@@ -4,6 +4,8 @@ import {
   REMOVE_FROM_CART_SUCCESS,
   UPDATE_CART_ITEM_SUCCESS,
   STORE_PRODUCTS,
+  CAPTURE_ORDER,
+  REFRESH_CART,
 } from "./actionTypes";
 import { createStore, applyMiddleware, compose } from "redux";
 import { createWrapper, HYDRATE } from "next-redux-wrapper";
@@ -18,6 +20,8 @@ const initialState = {
     checkoutTokenObject: {},
   },
   orderReceipt: {},
+  captureOrder: {},
+  errorMessage: "",
 };
 
 const productsStore = (state = initialState, action) => {
@@ -35,6 +39,12 @@ const productsStore = (state = initialState, action) => {
       return { ...state, cart: action.payload };
     }
     case UPDATE_CART_ITEM_SUCCESS: {
+      return { ...state, cart: action.payload };
+    }
+    case CAPTURE_ORDER: {
+      return { ...state, captureOrder: action.payload };
+    }
+    case REFRESH_CART: {
       return { ...state, cart: action.payload };
     }
 

@@ -1,7 +1,10 @@
+import commerce from "../commerce/commerce";
 import {
   ADD_TO_CART_SUCCESS,
   REMOVE_FROM_CART_SUCCESS,
   UPDATE_CART_ITEM_SUCCESS,
+  CAPTURE_ORDER,
+  REFRESH_CART,
 } from "./actionTypes";
 
 let headers = {
@@ -65,4 +68,29 @@ export const addToCart = (id) => async (dispatch, getState) => {
     .then((json) => json);
 
   dispatch(AddProductToCart(cartData));
+};
+
+const refreshCart = () => async (dispatch) => {
+  try {
+    const newCart = await commerce.cart.refresh();
+    dispatch({ type: REFRESH_CART, payload: newCart });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const handleCaptureCheckout = (checkoutTokenId, newOrder) => async (
+  dispatch
+) => {
+  try {
+    const incomingOrder = await commerce.checkout.capture(
+      checkoutTokenId,
+      newOrder
+    );
+    console.log(incomingOrder);
+    refreshCart();
+    dispatch({ type: CAPTURE_ORDER, payload: incomingOrder });
+  } catch (error) {
+    console.log(error);
+  }
 };
