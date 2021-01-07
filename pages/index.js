@@ -1,13 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { NavBar, Header, Services, Menu } from "../components";
+import { NavBar, Header, Services, Menu, Layout } from "../components";
 import commerce from "../commerce/commerce";
 import data from "./assets/data";
 import { useSelector, useDispatch } from "react-redux";
-import axios from "axios";
 
-export default function Home({ product, cart }) {
+export default function Home({ product, cart, categories }) {
   const dispatch = useDispatch();
-  const storeProducts = useSelector((store) => store.products);
+  const [weekMenu, setWeekMenu] = useState([]);
+
+  useEffect(function () {
+    const week = product.filter(
+      (product) => product.categories[0].name === "weekMenu"
+    );
+    setWeekMenu(week);
+  }, []);
 
   useEffect(function () {
     dispatch({ type: "STORE_PRODUCTS", payload: product });
@@ -15,20 +21,19 @@ export default function Home({ product, cart }) {
   }, []);
 
   return (
-    <>
-      <NavBar />
+    <Layout>
       <Header data={data.obj1} />
       <Header data={data.obj2} />
       <Services />
-      <Menu content={storeProducts} />
-    </>
+      <Menu content={weekMenu} />
+    </Layout>
   );
 }
 
 export async function getStaticProps() {
-  const product = await commerce.products
-    .list()
-    .then((product) => product.data);
+  const { data: product } = await commerce.products.list();
+  const { data: categories } = await commerce.categories.list();
+
   const url = new URL("https://api.chec.io/v1/carts");
   let headers = {
     "X-Authorization": process.env.customKey,
@@ -49,6 +54,6 @@ export async function getStaticProps() {
     };
   }
   return {
-    props: { product, cart },
+    props: { product, cart, categories },
   };
 }

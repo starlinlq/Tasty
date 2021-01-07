@@ -28,6 +28,7 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   margin: 0 15%;
+  margin-top: 7%;
 
   @media screen and (max-width: 800px) {
     margin: 0 1%;

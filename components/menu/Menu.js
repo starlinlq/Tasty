@@ -8,7 +8,7 @@ export default function Menu({ content }) {
       <Sec>
         <Section>
           <P>Special</P>
-          <Title>Menu of the week</Title>
+          <Title>Deals of the week</Title>
         </Section>
         <Container>
           {content &&

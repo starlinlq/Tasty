@@ -16,6 +16,7 @@ import {
   TotalWrapper,
   TotalItems,
   Content,
+  To,
 } from "./cartItems.elements";
 import Image from "next/image";
 import { MdAddCircleOutline } from "react-icons/md";
@@ -97,7 +98,9 @@ const CartItems = ({ cart, setDisplayCart }) => {
           </TotalWrapper>
           <CartActions>
             <EmptyCart onClick={handleEmptyCart}>Empty cart</EmptyCart>
-            <CheckOut>checkout </CheckOut>
+            <CheckOut href="/checkout" forwardedAs="checkout" passHref>
+              <To>checkout</To>
+            </CheckOut>
           </CartActions>
         </>
       )}

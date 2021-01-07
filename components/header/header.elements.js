@@ -6,14 +6,13 @@ export const Wrapper = styled.div`
   display: flex;
   align-items: center;
 
-  height: 100vh;
-  @media screen and (max-width: 1100px) {
-    height: 100%;
+  @media screen and (min-width: 1100px) {
+    height: 100vh;
   }
   @media screen and (max-width: 800px) {
     padding-top: 1%;
   }
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 450px) {
     padding-top: 10%;
   }
 `;

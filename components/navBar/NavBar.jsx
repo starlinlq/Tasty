@@ -16,6 +16,7 @@ import {
   Cart,
   Section,
   Wrapper,
+  To,
 } from "./navbar.elements";
 import { useSelector } from "react-redux";
 import CartItems from "./shoppingCart/CartItems";
@@ -47,11 +48,11 @@ export default function NavBar() {
     }
     setDisplayCart(!displayCart);
   }
-
+  /* 
   useEffect(function () {
     window.addEventListener("scroll", changeBackground);
   }, []);
-
+ */
   return (
     <NavWrapper onscroll={nav}>
       <Nav>
@@ -59,11 +60,15 @@ export default function NavBar() {
           <Title>Tasty</Title>
         </TitleWrapper>
         <Container active={active}>
-          <Item>Home</Item>
-          <Item>Menu</Item>
-          <Item>About</Item>
+          <Item href="/" passHref forwardedAs="/">
+            <To>Home</To>
+          </Item>
+          <Item href="/menu" passHref forwardedAs="/menu">
+            <To>Menu</To>
+          </Item>
+          {/*   <Item>About</Item>
           <Item>Services</Item>
-          <Item>Contact us</Item>
+          <Item>Contact us</Item> */}
         </Container>
         <Icons>
           <SingleIcon>

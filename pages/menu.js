@@ -1,15 +1,21 @@
 import React from "react";
 import { Layout } from "../components";
-import { Menu } from "../components";
+import { Item } from "../components";
 import commerce from "../commerce/commerce";
 import { MenuHeader } from "../components";
+import { Container, Title } from "../globalStyles/global.elements";
 
 const menu = ({ data }) => {
   return (
     <Layout>
       <>
         <MenuHeader />
-        <Menu content={data} />
+        <Title>Menu</Title>
+        <Container>
+          {data.map((data) => (
+            <Item product={data} key={data.id} />
+          ))}
+        </Container>
       </>
     </Layout>
   );

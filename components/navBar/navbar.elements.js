@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import Link from "next/link";
+import { GiBlackball } from "react-icons/gi";
 
 export const Nav = styled.div`
   display: flex;
@@ -83,12 +85,16 @@ export const MobileMenu = styled.div`
     display: block;
   }
 `;
-export const Item = styled.p`
+export const Item = styled(Link)``;
+
+export const To = styled.a`
   padding: 0 1%;
   margin: 0 2%;
   cursor: pointer;
   font-size: 1.1rem;
   transition: height 0.5s ease-out;
+  text-decoration: none;
+  color: black;
 
   &:hover {
     transition: hight 0.5s ease-in;
