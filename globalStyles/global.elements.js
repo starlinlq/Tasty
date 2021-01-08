@@ -15,6 +15,10 @@ export const Container = styled.div`
 export const InputWrapper = styled.div`
   margin-right: 5%;
   padding: 3% 0;
+  @media (max-width: 800px) {
+    width: 100%;
+    margin: 0;
+  }
 `;
 
 export const Span = styled.span`
@@ -36,14 +40,14 @@ export const Button = styled.button`
   }
 `;
 export const Submit = styled.input`
-  margin-top: 3%;
-  margin-left: 2%;
-  margin-right: 10px;
   background-color: white;
   border: 1px solid black;
   padding: 10px 50px;
   border-radius: 4px;
   cursor: pointer;
+  position: absolute;
+  bottom: -35px;
+  left: 0;
 
   &:hover {
     border-color: grey;
@@ -66,17 +70,24 @@ export const Section = styled.div`
   align-items: center;
 `;
 export const Form = styled.form`
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   margin: 0 2%;
 `;
 export const Wrapper = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   width: 700px;
-  height: 600px;
+  min-height: 600px;
+
   box-shadow: 0 2px 4px rgba(3, 74, 40, 0.15);
+
+  @media (max-width: 800px) {
+    align-items: center;
+  }
 `;
 export const Input = styled.input`
   width: 250px;
@@ -87,6 +98,10 @@ export const Input = styled.input`
   padding: 10px 0;
 
   font-size: 1rem;
+
+  @media (max-width: 800px) {
+    width: 100%;
+  }
 
   &:active {
     border-color: lightblue;
@@ -102,7 +117,7 @@ export const StepSection = styled.div`
   align-items: center;
   margin: 5% 2%;
 `;
-export const P = styled.p`
+export const Pa = styled.p`
   font-size: ${({ fontSize }) => fontSize};
   margin: 0 2%;
   padding: 2% 0;
@@ -114,6 +129,9 @@ export const Hr = styled.hr`
 
 export const Display1 = styled.div`
   display: ${({ step1 }) => (step1 ? "flex" : "none")};
+  @media (max-width: 800px) {
+    justify-content: center;
+  }
 
   flex-wrap: wrap;
 `;

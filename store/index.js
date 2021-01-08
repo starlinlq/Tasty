@@ -6,9 +6,12 @@ import {
   STORE_PRODUCTS,
   CAPTURE_ORDER,
   REFRESH_CART,
+  ORDER_ERROR,
+  PROCESSING_ORDER,
+  RESET,
 } from "./actionTypes";
 import { createStore, applyMiddleware, compose } from "redux";
-import { createWrapper, HYDRATE } from "next-redux-wrapper";
+import { createWrapper } from "next-redux-wrapper";
 import thunk from "redux-thunk";
 
 const initialState = {
@@ -20,8 +23,10 @@ const initialState = {
     checkoutTokenObject: {},
   },
   orderReceipt: {},
-  captureOrder: {},
+  captureOrder: null,
   errorMessage: "",
+  orderError: false,
+  processingOrder: false,
 };
 
 const productsStore = (state = initialState, action) => {
@@ -44,8 +49,22 @@ const productsStore = (state = initialState, action) => {
     case CAPTURE_ORDER: {
       return { ...state, captureOrder: action.payload };
     }
+    case ORDER_ERROR: {
+      return { ...state, orderError: true };
+    }
     case REFRESH_CART: {
       return { ...state, cart: action.payload };
+    }
+    case PROCESSING_ORDER: {
+      return { ...state, processingOrder: true };
+    }
+    case RESET: {
+      return {
+        ...state,
+        processingOrder: false,
+        orderError: false,
+        captureOrder: null,
+      };
     }
 
     default:

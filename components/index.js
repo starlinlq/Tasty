@@ -6,3 +6,5 @@ export { default as Layout } from "./layout/Layout";
 export { default as Item } from "./menu/Item";
 export { default as MenuHeader } from "./menuHeader/MenuHeader";
 export { default as Form } from "./form/Form";
+export { default as Review } from "./review/Review";
+export { default as Confirmation } from "./confirmation/Confirmation";

@@ -5,6 +5,8 @@ import {
   UPDATE_CART_ITEM_SUCCESS,
   CAPTURE_ORDER,
   REFRESH_CART,
+  ORDER_ERROR,
+  PROCESSING_ORDER,
 } from "./actionTypes";
 
 let headers = {
@@ -73,6 +75,7 @@ export const addToCart = (id) => async (dispatch, getState) => {
 const refreshCart = () => async (dispatch) => {
   try {
     const newCart = await commerce.cart.refresh();
+    console.log(newCart);
     dispatch({ type: REFRESH_CART, payload: newCart });
   } catch (error) {
     console.log(error);
@@ -87,10 +90,11 @@ export const handleCaptureCheckout = (checkoutTokenId, newOrder) => async (
       checkoutTokenId,
       newOrder
     );
-    console.log(incomingOrder);
-    refreshCart();
+    dispatch(refreshCart());
+    dispatch({ type: PROCESSING_ORDER });
     dispatch({ type: CAPTURE_ORDER, payload: incomingOrder });
   } catch (error) {
-    console.log(error);
+    dispatch({ type: PROCESSING_ORDER });
+    dispatch({ type: ORDER_ERROR });
   }
 };

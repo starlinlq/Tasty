@@ -6,6 +6,7 @@ import { AiFillCheckCircle } from "react-icons/ai";
 import { useSelector, useDispatch } from "react-redux";
 import { handleCaptureCheckout } from "../store/cartActions";
 import commerce from "../commerce/commerce";
+import { Review, Confirmation } from "../components";
 import {
   Elements,
   CardElement,
@@ -20,7 +21,7 @@ import {
   Input,
   Title,
   StepSection,
-  P,
+  Pa,
   Hr,
   Span,
   InputWrapper,
@@ -30,6 +31,9 @@ import {
 } from "../globalStyles/global.elements";
 
 const checkout = () => {
+  const { captureOrder, processingOrder, orderError } = useSelector(
+    (store) => store
+  );
   const dispatch = useDispatch();
   const { register, handleSubmit, watch, errors } = useForm();
   const [step1, setStep1] = useState(true);
@@ -112,8 +116,13 @@ const checkout = () => {
     [cart]
   );
 
+  useEffect(function () {
+    dispatch({ type: "RESET" });
+  }, []);
+
   const Payment = () => (
     <Display2 step2={step2}>
+      {token && <Review data={token} />}
       <Elements stripe={stripePromise}>
         <ElementsConsumer>
           {({ elements, stripe }) => (
@@ -128,10 +137,8 @@ const checkout = () => {
                   display: "flex",
                 }}
               >
-                {step2 ? <div onClick={handleStep}>back</div> : null}
-                <Button type="submit" disabled={!stripe}>
-                  Pay
-                </Button>
+                <Button onClick={handleStep}>back</Button>
+                <Button type="submit">Pay</Button>
               </div>
             </form>
           )}
@@ -142,100 +149,107 @@ const checkout = () => {
 
   return (
     <Layout>
-      <Section step1={step1}>
-        <Wrapper>
-          <Title>Checkout</Title>
-          <StepSection>
-            <P fontSize="16px">
-              {" "}
-              {step1 ? (
-                <AiOutlineCheckCircle style={{ color: "lightblue" }} />
-              ) : (
-                <AiFillCheckCircle />
-              )}
-              Shipping address
-            </P>
-            <Hr />
-            <P fontSize="16px">
-              {" "}
-              <AiOutlineCheckCircle
-                style={{
-                  color: step2 ? "lightblue" : "black",
-                }}
-              />{" "}
-              Payment details
-            </P>
-          </StepSection>
-          {step1 ? (
-            <P fontSize="20px">Delivery information</P>
-          ) : (
-            <P fontSize="20px">Payment information</P>
-          )}
-          <Form onSubmit={handleSubmit(handleForm)}>
-            <Display1 step1={step1}>
-              <InputWrapper>
-                <Input
-                  placeholder="First name"
-                  name="firstname"
-                  ref={register({ required: true })}
-                />
-                {errors.name && <Span>This field is required</Span>}
-              </InputWrapper>
-              <InputWrapper>
-                <Input
-                  placeholder="Last name"
-                  name="lastname"
-                  ref={register({ required: true })}
-                />
-                {errors.name && <Span>This field is required</Span>}
-              </InputWrapper>
+      {processingOrder ? (
+        <Section>
+          <Wrapper>
+            {" "}
+            {captureOrder && <Confirmation data={captureOrder} />}{" "}
+            {orderError && <h1>there was an error</h1>}
+          </Wrapper>
+        </Section>
+      ) : (
+        <Section step1={step1}>
+          <Wrapper>
+            <Title>Checkout</Title>
+            <StepSection>
+              <Pa fontSize="16px">
+                {" "}
+                {step1 ? (
+                  <AiOutlineCheckCircle style={{ color: "lightblue" }} />
+                ) : (
+                  <AiFillCheckCircle />
+                )}
+                Shipping address
+              </Pa>
+              <Hr />
+              <Pa fontSize="16px">
+                {" "}
+                <AiOutlineCheckCircle
+                  style={{
+                    color: step2 ? "lightblue" : "black",
+                  }}
+                />{" "}
+                Payment details
+              </Pa>
+            </StepSection>
+            {step1 ? (
+              <Pa fontSize="20px">Delivery information</Pa>
+            ) : (
+              <Pa fontSize="20px">Payment information</Pa>
+            )}
+            <Form onSubmit={handleSubmit(handleForm)}>
+              <Display1 step1={step1}>
+                <InputWrapper>
+                  <Input
+                    placeholder="First name"
+                    name="firstname"
+                    ref={register({ required: true })}
+                  />
+                  {errors.name && <Span>This field is required</Span>}
+                </InputWrapper>
+                <InputWrapper>
+                  <Input
+                    placeholder="Last name"
+                    name="lastname"
+                    ref={register({ required: true })}
+                  />
+                  {errors.name && <Span>This field is required</Span>}
+                </InputWrapper>
 
-              <InputWrapper>
-                <Input
-                  placeholder="Email"
-                  name="email"
-                  ref={register({
-                    required: true,
-                    minLength: 3,
-                    maxLength: 20,
-                  })}
-                />
-                {errors.email && <Span>This field is required</Span>}
-              </InputWrapper>
-              <InputWrapper>
-                <Input
-                  placeholder="address"
-                  name="address"
-                  ref={register({
-                    required: true,
-                    minLength: 3,
-                    maxLength: 20,
-                  })}
-                />
-                {errors.address && <Span>This field is required</Span>}
-              </InputWrapper>
+                <InputWrapper>
+                  <Input
+                    placeholder="Email"
+                    name="email"
+                    ref={register({
+                      required: true,
+                      minLength: 3,
+                      maxLength: 20,
+                    })}
+                  />
+                  {errors.email && <Span>This field is required</Span>}
+                </InputWrapper>
+                <InputWrapper>
+                  <Input
+                    placeholder="address"
+                    name="address"
+                    ref={register({
+                      required: true,
+                      minLength: 3,
+                      maxLength: 20,
+                    })}
+                  />
+                  {errors.address && <Span>This field is required</Span>}
+                </InputWrapper>
 
-              <InputWrapper>
-                <Input
-                  placeholder="Zip code"
-                  name="zipcode"
-                  ref={register({
-                    required: true,
-                    minLength: 3,
-                    maxLength: 6,
-                  })}
-                />
-                {errors.zipCode && <Span>This field is required</Span>}
-              </InputWrapper>
-              <Submit type="submit" />
-            </Display1>
-          </Form>
-          <Payment />
-          {/* <div style={{ display: "flex", marginTop: 10 }}>
-            {step1 && <Button onClick={handleStep}>next</Button>}
-          </div> */}
-        </Wrapper>
-      </Section>
+                <InputWrapper>
+                  <Input
+                    placeholder="Zip code"
+                    name="zipcode"
+                    ref={register({
+                      required: true,
+                      minLength: 3,
+                      maxLength: 6,
+                    })}
+                  />
+                  {errors.zipCode && <Span>This field is required</Span>}
+                </InputWrapper>
+                <Submit type="submit" />
+              </Display1>
+            </Form>
+            <Payment />
+          </Wrapper>
+        </Section>
+      )}
     </Layout>
   );
 };
