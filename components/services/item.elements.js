@@ -18,7 +18,8 @@ export const Wrapper = styled.div`
 export const Section = styled.div``;
 export const Title = styled.h2`
   padding: 5% 0;
+  color: ${(props) => props.theme.titleColor};
 `;
 export const Subtitle = styled.p`
-  color: #707070;
+  color: ${(props) => props.theme.fontColor};
 `;

@@ -9,6 +9,7 @@ import {
   ORDER_ERROR,
   PROCESSING_ORDER,
   RESET,
+  THEME_SWITCH,
 } from "./actionTypes";
 import { createStore, applyMiddleware, compose } from "redux";
 import { createWrapper } from "next-redux-wrapper";
@@ -27,6 +28,7 @@ const initialState = {
   errorMessage: "",
   orderError: false,
   processingOrder: false,
+  theme: true,
 };
 
 const productsStore = (state = initialState, action) => {
@@ -65,6 +67,9 @@ const productsStore = (state = initialState, action) => {
         orderError: false,
         captureOrder: null,
       };
+    }
+    case THEME_SWITCH: {
+      return { ...state, theme: action.payload };
     }
 
     default:

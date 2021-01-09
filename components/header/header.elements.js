@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Link from "next/link";
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -38,7 +39,7 @@ export const Container = styled.div`
   }
 `;
 export const Title = styled.h1`
-  color: ${({ color }) => color};
+  color: #54e346;
   margin: 0;
 `;
 export const Section = styled.div`
@@ -68,14 +69,16 @@ export const InfoWrapper = styled.div`
   }
 `;
 export const SubTitle = styled.p`
-  color: #707070;
+  color: ${(props) => props.theme.fontColor};
   margin: 3% 0;
 
   @media screen and (max-width: 800px) {
     margin: 5% 0;
   }
 `;
-export const Menu = styled.button`
+
+export const Menu = styled(Link)``;
+export const To = styled.button`
   padding: 3% 7%;
   background-color: #81b214;
   border: 1px solid white;
@@ -105,7 +108,7 @@ export const ImgWrapper = styled.div`
 `;
 
 export const About = styled.p`
-  color: #54e346;
+  color: ${(props) => props.theme.fontColor};
 `;
 
 export const Wrapper1 = styled.div`

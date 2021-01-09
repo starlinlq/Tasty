@@ -10,6 +10,7 @@ import {
   InfoWrapper,
   About,
   Wrapper1,
+  To,
 } from "./header.elements";
 import Image from "next/image";
 
@@ -22,7 +23,9 @@ const Header = ({ data }) => {
             {data.about ? <About>About us</About> : null}
             <Title color={data.color}>{data.title}</Title>
             <SubTitle>{data.subTitle}</SubTitle>
-            <Menu>{data.button}</Menu>
+            <Menu href="/menu" forwardedAs="/menu" passHref>
+              <To>{data.button}</To>
+            </Menu>
           </InfoWrapper>
         </Section>
         <ImgWrapper order={data.order} padding={data.padding}>

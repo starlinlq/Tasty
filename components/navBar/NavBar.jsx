@@ -18,10 +18,12 @@ import {
   Wrapper,
   To,
 } from "./navbar.elements";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import CartItems from "./shoppingCart/CartItems";
+import { handleTheme } from "../../store/handleTheme";
 
 export default function NavBar() {
+  const dispatch = useDispatch();
   const [active, setActive] = useState(false);
   const [nav, setNav] = useState(false);
   const { cart } = useSelector((store) => store);
@@ -41,6 +43,9 @@ export default function NavBar() {
     }
     setActive(!active);
   }
+  function theme() {
+    dispatch(handleTheme());
+  }
 
   function handleDisplayCart() {
     if (active) {
@@ -57,7 +62,9 @@ export default function NavBar() {
     <NavWrapper onscroll={nav}>
       <Nav>
         <TitleWrapper>
-          <Title>Tasty</Title>
+          <Item href="/" forwardedAs="/" passHref>
+            <Title>tasty</Title>
+          </Item>
         </TitleWrapper>
         <Container active={active}>
           <Item href="/" passHref forwardedAs="/">
@@ -71,7 +78,7 @@ export default function NavBar() {
           <Item>Contact us</Item> */}
         </Container>
         <Icons>
-          <SingleIcon>
+          <SingleIcon onClick={theme}>
             <WiMoonAltWaningCrescent1 />
           </SingleIcon>
           <Cart>

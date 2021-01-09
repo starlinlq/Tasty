@@ -3,6 +3,7 @@ export const Container = styled.div`
   display: flex;
   justify-content: space-between;
   flex-flow: wrap;
+  background: ${(props) => props.theme.body};
 
   @media screen and (max-width: 800px) {
     justify-content: center;
@@ -19,7 +20,9 @@ export const Section = styled.div`
     font-size: 1.3rem;
   }
 `;
-export const Title = styled.h1``;
+export const Title = styled.h1`
+  color: ${(props) => props.theme.title};
+`;
 export const P = styled.p`
   padding-bottom: 2%;
   color: #54e346;

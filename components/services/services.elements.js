@@ -22,16 +22,17 @@ export const Section = styled.div`
 export const Wrapper = styled.div`
   display: flex;
   margin-top: 3%;
- 
+
   flex-direction: column;
   justify-content: center;
   align-items: center;
   @media screen and (max-width: 800px) {
-    
   }
 `;
 
-export const Title = styled.h1``;
+export const Title = styled.h1`
+  color: ${(props) => props.theme.title};
+`;
 export const P = styled.p`
   color: #54e346;
 `;

@@ -8,3 +8,4 @@ export const REFRESH_CART = "REFRESH_CART";
 export const ORDER_ERROR = "ORDER_ERROR";
 export const PROCESSING_ORDER = "PROCESSING_ORDER";
 export const RESET = "RESET";
+export const THEME_SWITCH = "THEME_SWITCH";

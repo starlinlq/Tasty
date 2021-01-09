@@ -4,6 +4,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: ${(props) => props.theme.containerColor};
   font-size: 1.1rem;
   box-shadow: 0 2px 4px rgba(3, 74, 40, 0.15);
   padding: 2rem 1rem;
@@ -19,11 +20,15 @@ export const Container = styled.div`
 `;
 export const ImgWrapper = styled.div``;
 export const Section = styled.div`
-margin-top: 5%;`;
-export const Title = styled.h3``;
+  margin-top: 5%;
+`;
+export const Title = styled.h3`
+  color: ${(props) => props.theme.titleColor};
+`;
 export const P = styled.p`
   margin: 3% 0;
   width: 250px;
+  color: ${(props) => props.theme.fontColor};
 `;
 export const Cart = styled.div`
   font-size: 25px;

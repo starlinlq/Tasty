@@ -3,7 +3,7 @@ import { Layout } from "../components";
 import { Item } from "../components";
 import commerce from "../commerce/commerce";
 import { MenuHeader } from "../components";
-import { Container, Title } from "../globalStyles/global.elements";
+import { MenuWrapper, Title } from "../globalStyles/global.elements";
 
 const menu = ({ data }) => {
   return (
@@ -11,11 +11,11 @@ const menu = ({ data }) => {
       <>
         <MenuHeader />
         <Title>Menu</Title>
-        <Container>
+        <MenuWrapper>
           {data.map((data) => (
             <Item product={data} key={data.id} />
           ))}
-        </Container>
+        </MenuWrapper>
       </>
     </Layout>
   );

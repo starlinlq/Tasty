@@ -1,9 +1,23 @@
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
+
+export const GlobalStyle = createGlobalStyle`
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body{
+    background-color: ${(props) => props.theme.body}
+  }
+`;
+
 export const Container = styled.div`
   display: flex;
   justify-content: space-between;
   flex-flow: wrap;
   margin: 0 15%;
+  background-color: ${(props) => props.theme.containerColor};
 
   @media screen and (max-width: 800px) {
     justify-content: center;
@@ -57,7 +71,7 @@ export const Title = styled.h1`
   margin: 0 15%;
   padding: 2% 0;
   text-align: center;
-
+  color: ${(props) => props.theme.title};
   @media (max-width: 800px) {
     margin: 0 5%;
   }
@@ -82,6 +96,7 @@ export const Wrapper = styled.div`
   justify-content: center;
   width: 700px;
   min-height: 600px;
+  background-color: ${(props) => props.theme.containerColor};
 
   box-shadow: 0 2px 4px rgba(3, 74, 40, 0.15);
 
@@ -121,6 +136,7 @@ export const Pa = styled.p`
   font-size: ${({ fontSize }) => fontSize};
   margin: 0 2%;
   padding: 2% 0;
+  color: ${(props) => props.theme.fontColor};
 `;
 export const Hr = styled.hr`
   height: 1px;
@@ -139,4 +155,21 @@ export const Display2 = styled.div`
   display: ${({ step2 }) => (step2 ? "flex" : "none")};
 
   flex-wrap: wrap;
+`;
+
+export const DivAnimate = styled.div`
+  transform: translateX(${({ animate }) => (animate ? "0" : "-100vw")});
+  transition: transform 1s;
+`;
+export const MenuWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-flow: wrap;
+  margin: 0 15%;
+
+  @media screen and (max-width: 800px) {
+    justify-content: center;
+    align-items: center;
+    margin: 0 1%;
+  }
 `;

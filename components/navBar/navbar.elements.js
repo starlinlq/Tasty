@@ -22,15 +22,20 @@ export const NavWrapper = styled.div`
   width: 100%;
   z-index: ${({ onscroll }) => (onscroll ? 999 : 1)};
   box-shadow: ${({ onscroll }) => (onscroll ? "0 4px 2px -2px #d5d5d5" : 0)};
-  background-color: white;
+  background-color: ${(props) => props.theme.body};
 `;
 export const TitleWrapper = styled.div`
   @media screen and (max-width: 800px) {
     margin-left: 10px;
   }
 `;
-export const Title = styled.h2`
+export const Title = styled.a`
+  text-decoration: none;
+  color: black;
+  font-size: 1.5rem;
+  font-weight: bold;
   text-align: center;
+  color: ${(props) => props.theme.title};
 `;
 export const Container = styled.div`
   display: flex;
@@ -74,6 +79,7 @@ export const SingleIcon = styled.div`
   position: relative;
   text-align: center;
   font-size: 1.8rem;
+  color: ${(props) => props.theme.fontColor};
 
   &:hover {
     color: black;
@@ -96,7 +102,7 @@ export const To = styled.a`
   font-size: 1.1rem;
   transition: height 0.5s ease-out;
   text-decoration: none;
-  color: black;
+  color: ${(props) => props.theme.fontColor};
 
   &:hover {
     transition: hight 0.5s ease-in;
@@ -131,6 +137,7 @@ export const Section = styled.div`
   position: relative;
   text-align: center;
   font-size: 1.8rem;
+  color: ${(props) => props.theme.fontColor};
 
   &:hover {
     color: black;
